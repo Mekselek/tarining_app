@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'get_data.dart';
+import 'package:http/http.dart';
 
-void main() {
-  runApp(const MyApp());
+void main() async {
+  runApp(MyApp());
+  funkcja();
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  var workoutCount = 0;
+  var workoutCount = workoutNum;
+  dynamic num = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +37,8 @@ class _MyHomePageState extends State<MyHomePage> {
           child: Column(children: [
         Center(
           child: Text(
-            'Hi Maks! This is your ${workoutCount} training!',
-            style: TextStyle(fontSize: 28),
+            'Hi Maks! This is your \n $workoutNum training!',
+            style: TextStyle(fontSize: 25),
             textAlign: TextAlign.center,
           ),
         ),
@@ -48,7 +50,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton.styleFrom(backgroundColor: Colors.lightGreen),
               onPressed: () {
                 setState(() {
-                  workoutCount += 1;
+                  workoutNum += 1;
                 });
               },
               child: Text('Add your Workout'),
@@ -61,17 +63,27 @@ class _MyHomePageState extends State<MyHomePage> {
                   ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
               onPressed: () {
                 setState(() {
-                  if (workoutCount >= 1) {
-                    workoutCount -= 1;
+                  if (workoutNum >= 1) {
+                    workoutNum -= 1;
                   } else {
-                    workoutCount = 0;
+                    workoutNum = 0;
                   }
                 });
               },
               child: Text('Delete your workout'),
             ),
           ],
-        )
+        ),
+        ElevatedButton(
+          style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
+          onPressed: () {
+            setState(() {
+              num += 1;
+              
+            });
+          },
+          child: Text('Delete your workout'),
+        ),
       ])),
     );
   }
