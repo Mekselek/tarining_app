@@ -83,15 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
           },
           child: Text('Delete your workout'),
         ),
-        ElevatedButton(
-          style: ElevatedButton.styleFrom(backgroundColor: Colors.redAccent),
-          onPressed: () {
-            setState(() {
-              num += 1;
-            });
-          },
-          child: Text('Delete your workout'),
-        ),
+
       ])),
     );
   }
